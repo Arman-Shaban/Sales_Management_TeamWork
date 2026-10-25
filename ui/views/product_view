@@ -1,1 +1,93 @@
+from tkinter import *
+from tkinter import ttk ,messagebox
+
+from controller.product_controller import ProductController
+
+
+class ProductView:
+    def __init__(self):
+        self.controller = ProductController()
+
+        self.win = Tk()
+        self.win.geometry("600x350")
+        self.win.title("Product")
+
+        # ProductID
+        Label(self.win, text="Product Id").place(x=20,y=20)
+        self.product_id =  IntVar()
+        Entry(self.win, textvariable=self.product_id).place(x=100, y = 20)
+
+        # ProductName
+        Label(self.win, text="Product Name").place(x=20,y=60)
+        self.product_name = StringVar()
+        Entry(self.win, textvariable=self.product_name).place(x=100, y = 60)
+
+        # StockInventory
+        Label(self.win, text="StockInventory").place(x=20, y=100)
+        self.stock_inventory = StringVar()
+        Entry(self.win, textvariable=self.stock_inventory).place(x=100, y = 100)
+
+        # Price
+        Label(self.win, text ="Price").place(x=20,y=140)
+        self.price = IntVar()
+        Entry(self.win, textvariable=self.price).place(x=100,y=140)
+
+        # table
+        self.table = ttk.Treeview(self.win, show="headings", columns=[1,2,3,4])
+        self.table.place(x=250, y =20)
+
+        self.table.column(1, width=60)
+        self.table.column(2, width=100)
+        self.table.column(3, width=100)
+        self.table.column(4, width=60)
+
+        self.table.heading(1, text="Product Id")
+        self.table.heading(2, text="Product Name")
+        self.table.heading(3, text="Stock Inventory")
+        self.table.heading(4, text="Price")
+
+        self.table.bind("<ButtonRelease>", self.table_click)
+
+        Button(self.win, text="Save", command=self.save_click).place(x= 50, y = 200)
+        self.reset_from()
+        self.win.mainloop()
+
+
+    def reset_from(self):
+        self.product_id.set(0)
+        self.product_name.set("")
+        self.stock_inventory.set("")
+        self.price.set(0)
+
+        # Clear Table
+        for item in self.table.get_children():
+            self.table.delete(item)
+
+       # Set All Products On Table
+        for Product in self.controller.find_all()[1]:
+            self.table.insert("", END, values=Product.to_tuple())
+
+    def save_click(self):
+        success, message = self.controller.save(
+            self.product_id.get(),
+            self.product_name.get(),
+            self.stock_inventory.get(),
+            self.price.get()
+        )
+
+        if success:
+            messagebox.showinfo("Success", message)
+            self.reset_from()
+        else:
+            messagebox.showerror("Error", message)
+
+    def table_click(self, event):
+        selected_product_id = self.table.focus()
+        selected_product = self.table.item(selected_product_id)["values"]
+
+        if selected_product:
+            self.product_id.set(int(selected_product[0]))
+            self.product_name.set(selected_product[1])
+            self.stock_inventory.set(selected_product[2])
+            self.price.set(int(selected_product[3]))
 
