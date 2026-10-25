@@ -125,7 +125,6 @@ class OrderView:
         for Product in self.controller.find_all()[1]:
             self.table.insert("", END, values=Product.to_tuple())
 
-    #
     def save_click(self):
         success, message = self.controller.save(
             self.order_id.get(),
@@ -146,10 +145,10 @@ class OrderView:
             self.reset_from()
         else:
             messagebox.showerror("Error", message)
-
-    def table_click(self, event):
-        selected_product_id = self.table.focus()
-        selected_product = self.table.item(selected_product_id)["values"]
+    #todo : test eror
+     #def table_click(self, event):
+      #  selected_product_id = self.table.focus()
+      #  selected_product = self.table.item(selected_product_id)["values"]
 
         if selected_order:
             self.order_id.set(int(selected_order[0]))
