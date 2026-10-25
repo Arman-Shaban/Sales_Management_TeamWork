@@ -1,5 +1,59 @@
-#person1
+#person2
+from tools.validation import  Validator
 
-# Arman Test modern programming
+class Product:
+    def __init__(self, product_id, product_name, stock_inventory, price):
+        self.product_id = product_id
+        self.product_name = product_name
+        self.stock_inventory = stock_inventory #quantity
+        self.price = price
 
-# ___________________ll
+    @property
+    def product_id(self):
+        return self.__product_id
+
+    @product_id.setter
+    def product_id(self, product_id):
+        Validator.product_id_validator(product_id)
+        self.__product_id = product_id
+
+    @property
+    def product_name(self):
+        return self.__product_name
+
+    @product_name.setter
+    def product_name(self, product_name):
+        Validator.product_name_validator(product_name)
+        self.__product_name = product_name
+
+    @property
+    def stock_inventory(self):
+        return self.__stock_inventory
+
+    @stock_inventory.setter
+    def stock_inventory(self, stock_inventory):
+        Validator.stock_inventory_validator(stock_inventory)
+        self.__stock_inventory = stock_inventory
+
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price):
+        Validator.price_validator(price)
+        self.__price = price
+
+    def __repr__(self):
+        return (f"Product "
+        ({self.product_id},
+         {self.product_name},
+         {self.stock_inventory},
+         {self.price}))
+
+    def to_tuple(self):
+        return (self.product_id,
+                self.product_name,
+                self.stock_inventory,
+                self.price)
