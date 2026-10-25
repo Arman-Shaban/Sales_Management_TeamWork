@@ -122,8 +122,8 @@ class OrderView:
             self.table.delete(item)
 
         # Set All Products On Table
-        for Product in self.controller.find_all()[1]:
-            self.table.insert("", END, values=Product.to_tuple())
+        for Order in self.controller.find_all()[1]:
+            self.table.insert("", END, values=Order.to_tuple())
 
     def save_click(self):
         success, message = self.controller.save(
