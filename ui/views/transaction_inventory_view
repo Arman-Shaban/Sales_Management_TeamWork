@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk ,messagebox
 
 from controller.transaction_inventorycontroller import TransactionInventoryController
-_
+
 
 class TransactionInventoryView:
     def __init__(self):
