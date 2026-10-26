@@ -30,12 +30,12 @@ class TransactionInventoryView:
 
         # OrderID
         Label(self.win, text="Order Id").place(x=20,y=140)
-        self.Order_id =  IntVar()
+        self.Order_id = IntVar()
         Entry(self.win, textvariable=self.Order_id).place(x=100, y = 140)
 
         # Quantity
         Label(self.win, text="Quantity").place(x=20,y=180)
-        self.quantity =  IntVar()
+        self.quantity = IntVar()
         Entry(self.win, textvariable=self.quantity).place(x=100, y = 180)
 
         # DateTime
