@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import ttk ,messagebox
 
-from controller.product_controller import ProductController
+from controller.order_controller import OrderController
 
 
 class OrderView:
@@ -33,7 +33,7 @@ class OrderView:
         self.customer_name = StrVar()
         Entry(self.win, textvariable=self.customer_name).place(x=100, y=140)
 
-        # Status
+        # Status 
         Label(self.win, text="Status").place(x=20,y=180)
         self.status = StrVar()
         Entry(self.win, textvariable=self.status).place(x=100, y = 180)
@@ -49,14 +49,14 @@ class OrderView:
         Entry(self.win, textvariable=self.Transaction_inventory_id).place(x=100, y = 260)
 
         # Quantity
-        Label(self.win, text="Quantity Id").place(x=20,y=300)
-        self.quantity =  IntVar()
+        Label(self.win, text="Quantity").place(x=20,y=300)
+        self.quantity = IntVar()
         Entry(self.win, textvariable=self.quantity).place(x=100, y = 300)
 
         # TotalPrice
-        Label(self.win, text="TotalPrice").place(x=20,y=340)
-        self.totalprice =  IntVar()
-        Entry(self.win, textvariable=self.totalprice).place(x=100, y = 340)
+        Label(self.win, text="Total Price").place(x=20,y=340)
+        self.total_price =  IntVar()
+        Entry(self.win, textvariable=self.total_price).place(x=100, y = 340)
 
         # DateTime
         Label(self.win, text ="DateTime").place(x=20,y=380)
@@ -65,8 +65,8 @@ class OrderView:
 
         # OrderTime
         Label(self.win, text="OrderTime").place(x=20, y=420)
-        self.ordertime = StrVar()
-        Entry(self.win, textvariable=self.ordertime).place(x=100, y=420)
+        self.order_time = StrVar()
+        Entry(self.win, textvariable=self.order_time).place(x=100, y=420)
 
         # table
         self.table = ttk.Treeview(self.win, show="headings", columns=[1,2,3,4,5,6,7,8,9,10,11])
@@ -122,7 +122,7 @@ class OrderView:
         for item in self.table.get_children():
             self.table.delete(item)
 
-        # Set All Products On Table
+        # Set All Order On Table
         for Order in self.controller.find_all()[1]:
             self.table.insert("", END, values=Order.to_tuple())
 
