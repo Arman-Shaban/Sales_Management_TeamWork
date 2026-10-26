@@ -2,21 +2,21 @@
 from tkinter import *
 from tkinter import ttk ,messagebox
 
-from controller.product_controller import ProductController
-
+from controller.transaction_inventorycontroller import TransactionInventoryController
+_
 
 class TransactionInventoryView:
     def __init__(self):
         self.controller = TransactionInventoryController()
 
         self.win = Tk()
-        self.win.geometry("600x450")
-        self.win.title("Order")
+        self.win.geometry("600x350")
+        self.win.title("TransactionInventory")
 
         #TransactionInventoryID
-        Label(self.win, text="TransactionInventory Id").place(x=20,y=20)
-        self.TransactionInventory_id = IntVar()
-        Entry(self.win, textvariable=self.TransactionInventory_id).place(x=100, y = 20)
+        Label(self.win, text="Transaction_inventory_Id").place(x=20,y=20)
+        self.Transaction_inventory_id = IntVar()
+        Entry(self.win, textvariable=self.Transaction_inventory_id).place(x=100, y = 20)
 
         # TransactionInventoryType
         Label(self.win, text="Transaction Inventory Type").place(x=20, y=60)
