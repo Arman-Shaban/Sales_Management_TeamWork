@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import ttk ,messagebox
 
-from controller.product_controller import ProductController
+from controller.order_utem_controller import OrderItemController
 
 
 class OrderItemView:
@@ -15,7 +15,7 @@ class OrderItemView:
 
         # OrderItemID
         Label(self.win, text="Order Item Id").place(x=20,y=20)
-        self.order_item_id =  IntVar()
+        self.order_item_id = IntVar()
         Entry(self.win, textvariable=self.order_item_id).place(x=100, y = 20)
 
         # CustomerName
@@ -25,7 +25,7 @@ class OrderItemView:
 
         # ProductID
         Label(self.win, text="Product Id").place(x=20,y=100)
-        self.product_id =  IntVar()
+        self.product_id = IntVar()
         Entry(self.win, textvariable=self.product_id).place(x=100, y = 100)
 
         # ProductName
@@ -34,15 +34,14 @@ class OrderItemView:
         Entry(self.win, textvariable=self.Product_name).place(x=100, y=140)
 
         # Quantity
-        Label(self.win, text="Quantity Id").place(x=20,y=180)
-        self.quantity =  IntVar()
+        Label(self.win, text="Quantity").place(x=20,y=180)
+        self.quantity = IntVar()
         Entry(self.win, textvariable=self.quantity).place(x=100, y = 180)
 
         # Price
         Label(self.win, text="Price").place(x=20,y=220)
-        self.price =  IntVar()
+        self.price = IntVar()
         Entry(self.win, textvariable=self.price).place(x=100, y = 220)
-
 
 
         # table
@@ -86,7 +85,7 @@ class OrderItemView:
         for item in self.table.get_children():
             self.table.delete(item)
 
-        # Set All Products On Table
+        # Set All OrderItem On Table
         for OrderItem in self.controller.find_all()[1]:
             self.table.insert("", END, values=OrderItem.to_tuple())
 
