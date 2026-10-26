@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import ttk ,messagebox
 
-from controller.transaction_inventorycontroller import InventoryController
+from controller.inventorycontroller import InventoryController
 
 
 class InventoryView:
@@ -13,24 +13,24 @@ class InventoryView:
         self.win.geometry("600x350")
         self.win.title("Inventory")
 
-        #InventoryID
+        # InventoryID
         Label(self.win, text="Inventory Id").place(x=20,y=20)
         self.inventory_id = IntVar()
         Entry(self.win, textvariable=self.inventory_id).place(x=100, y = 20)
 
         # InventoryQuantity
         Label(self.win, text="InventoryQuantity").place(x=20,y=60)
-        self.Inventoryquantity =  IntVar()
-        Entry(self.win, textvariable=self.inventoryquantity).place(x=100, y = 600)
+        self.Inventory_quantity =  IntVar()
+        Entry(self.win, textvariable=self.inventory_quantity).place(x=100, y = 60)
 
         # DeficitAmoung
         Label(self.win, text="DeficitAmoung").place(x=20,y=100)
-        self.DeficitAmoung =  IntVar()
-        Entry(self.win, textvariable=self.DeficitAmoung).place(x=100, y = 100)
+        self.Deficit_amoung =  IntVar()
+        Entry(self.win, textvariable=self.Deficit_amoung).place(x=100, y = 100)
 
         # DateTime
         Label(self.win, text ="DateTime").place(x=20,y=140)
-        self.datetime = StrVar()
+        self.date_time = StrVar()
         Entry(self.win, textvariable=self.date_time).place(x=100,y=140)
 
         # table
@@ -45,7 +45,7 @@ class InventoryView:
 
         self.table.heading(1, text="Inventory Id")
         self.table.heading(2, text="Inventory Quantity")
-        self.table.heading(3, text="DeficitAmoung")
+        self.table.heading(3, text="Deficit Amoung")
         self.table.heading(4, text="Datetime")
         
 
