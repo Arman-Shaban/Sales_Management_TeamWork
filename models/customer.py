@@ -2,7 +2,7 @@
 
 class Customer:
 
-    next_id = 1
+    next_id = 1001
 
     def __init__(self, customer_name, customer_family, customer_phone):
         self.customer_id = Customer.next_id

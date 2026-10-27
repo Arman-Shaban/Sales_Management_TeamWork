@@ -2,8 +2,10 @@
 # می خوام بعدا لیست اقلام رو جدول مانند نشون بده
 from datetime import datetime
 class PaymentTransaction:
+    next_no = 1001
     def __init__(self, receipt_no, total_amount, date = None, time = None):
-        self.receipt_no = receipt_no
+        self.receipt_no = PaymentTransaction.next_no
+        PaymentTransaction.next_no += 1
         self.total_amount = total_amount
         self.date = date
         self.time = time
