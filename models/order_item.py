@@ -5,7 +5,7 @@ from datetime import date, timedelta, time
 from tools.validation import  Validator
 
 
-class Order_item:
+class Order_Item:
     def __init__(self, order_item_id, customer_name, product_id , price, quantity, date, time):
         self.order_item_id = order_item_id
         self.customer_name = customer_name
