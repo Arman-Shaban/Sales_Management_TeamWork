@@ -2,8 +2,9 @@
 
 from datetime import date, timedelta, time
 from tools.validation import Validator
-from model import order
+from models.order import Order
 
+# Soltani Updated
 
 class  Inventory:
     def __init__(self, inventory_id,
