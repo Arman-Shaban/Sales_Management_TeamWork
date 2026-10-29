@@ -6,9 +6,9 @@ from test import orderitem_test
 from datetime import date, time, timedelta
 from tools.validation import  Validator
 
-#purchase_invoice:
-#sales_invoice:
-#basket_invoice:
+#purchase_invoice: buy
+#sales_invoice: sell
+#basket_invoice: cart
 
 class Order:
     def __init__(self, buy, sell, cart):
@@ -37,22 +37,13 @@ class Order:
         self.__order_id = order_id
 
     @property
-    def order_name(self):
-        return self.__order_name
+    def order_type(self):
+        return self.__order_type
 
     @order_name.setter
-    def order_name(self, order_name):
-        Validator.order_name_validator(order_name)
-        self.__order_name = order_name
-
-    @property
-    def customer_id(self):
-        return self.__customer_id
-
-    @customer_id.setter
-    def customer_id(self, customer_id):
-        Validator.customer_id_validator(customer_id)
-        self.__customer_id = customer_id
+    def order_type(self, order_type):
+        Validator.order_type_validator(order_type)
+        self.__order_type = order_type
 
     @property
     def customer_id(self):
@@ -108,6 +99,15 @@ class Order:
         Validator.payment_id_validator(payment_id)
         self.__payment_id = payment_id
 
+     @property
+    def inventory_transaction_id(self):
+        return self.__inventory_transaction_id
+
+    @customer_id.setter
+    def inventory_transaction_id(self, inventory_transaction_id):
+        Validator.inventory_transaction_id_validator(inventory_transaction_id)
+        self.__inventory_transaction_id = inventory_transaction_id
+
     @property
     def date_time(self):
         return self.__date_time
@@ -135,6 +135,7 @@ class Order:
          {self.statuse},
          {self.total_price},
          {self.payment_id},
+         {self.inventory_transaction_id},
          {self.quantity},
          {self.date_time},
          {self.order_time}))
@@ -147,5 +148,6 @@ class Order:
                 self.statuse,
                 self.total_price,
                 self.payment_id,
+                self.inventory_transaction_id,
                 self.quantity,
                 self.date_time)
