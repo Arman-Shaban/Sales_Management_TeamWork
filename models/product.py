@@ -1,11 +1,12 @@
 #Sepideh
-from tools.validation import  Validator
+from tools.validation import Validator
 
 class Product:
     def __init__(self, product_id, product_name, stock_inventory, price):
         self.product_id = product_id
         self.product_name = product_name
-        self.stock_inventory = stock_inventory #quantity
+        self.product_brand = product_brand
+        self.stock_inventory = stock_inventory     #quantity
         self.price = price
 
     @property
@@ -27,6 +28,15 @@ class Product:
         self.__product_name = product_name
 
     @property
+    def product_name(self):
+        return self.__product_name
+
+    @product_brand.setter
+    def product_brand(self, product_brand):
+        Validator.product_brand_validator(product_brand)
+        self.__product_brand = product_brand
+        
+    @property
     def stock_inventory(self):
         return self.__stock_inventory
 
@@ -34,7 +44,6 @@ class Product:
     def stock_inventory(self, stock_inventory):
         Validator.stock_inventory_validator(stock_inventory)
         self.__stock_inventory = stock_inventory
-
 
     @property
     def price(self):
@@ -49,11 +58,13 @@ class Product:
         return (f"Product "
         ({self.product_id},
          {self.product_name},
+         {self.product_brand},
          {self.stock_inventory},
          {self.price}))
 
     def to_tuple(self):
         return (self.product_id,
                 self.product_name,
+                self.product_brand,
                 self.stock_inventory,
                 self.price)
