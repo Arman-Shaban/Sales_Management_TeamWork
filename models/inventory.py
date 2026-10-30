@@ -14,7 +14,7 @@ class  Inventory:
                  inventory_time,
                  inventory_date):
 
-        self.inventory_id = Inventory
+        self.inventory_id = inventory_id
         self.product_id = product_id
         self.inventory_quantity = inventory_quantity
         self.deficit_amount= deficit_amount
