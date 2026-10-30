@@ -5,7 +5,7 @@ from tools.validation import Validator
 from models import *
 
 
-class Inventory_Transaction:
+class Inventoryr_Tansaction:
     def __init__(self, 
                  inventory_transaction_id,
                  inventory_transaction_type,
@@ -14,7 +14,7 @@ class Inventory_Transaction:
                  quantity,
                  order_id):
 
-        self.inventory_transaction_id = inventory_transaction_id
+        self.inventory_transaction_id = Inventory_Transaction_Id
         self.inventory_transaction_type = inventory_transaction_type
         self.inventory_transaction_datetime = inventory_transaction_datetime
         self.product_id = product_id
