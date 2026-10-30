@@ -10,13 +10,26 @@ from tools.validation import Validator
 #basket_invoice: cart
 
 class Order:
-    def __init__(self, buy, sell, cart):
+    def __init__(self,
+                 order_id, 
+                 order_type,
+                 customer_id,
+                 customer_name, 
+                 status,
+                 total_price,
+                 quantuty,
+                 payment_id,
+                 inventory_transaction_id,
+                 date_time,
+                 order_time
+                 ):
+                     
         self.order_id = order_id
         self.order_type = order_type
         self.customer_id = customer_id
         self.customer_name = customer_name
-        self.status = status
-        self.total_price = total_price     # amount= price  
+        self.status = status                      #status: buy, sell, cart
+        self.total_price = total_price            # price = amount 
         self.quantity = quantity
         self.payment_id = payment_id
         self.inventory_transaction_id = inventory_transaction_id
@@ -28,7 +41,7 @@ class Order:
 
     @property
     def order_id(self):
-        return self.__order_id
+        return self._order_id
 
     @order_id.setter
     def order_id(self, order_id):
@@ -63,13 +76,13 @@ class Order:
         self.__customer_name = customer_name
 
     @property
-    def statuse(self):
-        return self.__statuse
+    def status(self):
+        return self.__status
 
-    @statuse.setter
-    def statuse(self, statuse):
-        Validator.statuse_validator(statuse)
-        self.__statuse = statuse
+    @status.setter
+    def status(self, status):
+        Validator.status_validator(status)
+        self.__status = status
 
     @property
     def total_price(self):
@@ -128,25 +141,26 @@ class Order:
     def __repr__(self):
         return (f"Order"
         ({self.order_id},
-         {self.order_type},
-         {self.customer_id},
-         {self.customer_name},
-         {self.statuse},
-         {self.total_price},
-         {self.payment_id},
-         {self.inventory_transaction_id},
-         {self.quantity},
-         {self.date_time},
-         {self.order_time}))
+        {self.order_type},
+        {self.customer_id},
+        {self.customer_name},
+        {self.status},
+        {self.total_price},
+        {self.payment_id},
+        {self.inventory_transaction_id},
+        {self.quantity},
+        {self.date_time},
+        {self.order_time}))
 
     def to_tuple(self):
         return (self.order_id,
                 self.order_type,
                 self.customer_id,
                 self.customer_name,
-                self.statuse,
+                self.status,
                 self.total_price,
                 self.payment_id,
                 self.inventory_transaction_id,
                 self.quantity,
-                self.date_time)
+                self.date_time
+                self.order_time)
