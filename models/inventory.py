@@ -10,14 +10,14 @@ class  Inventory:
     def __init__(self, inventory_id,
                  product_id,
                  inventory_quantity,
-                 deficit_amount,
+                 deficient_amount,
                  inventory_time,
                  inventory_date):
 
         self.inventory_id = inventory_id
         self.product_id = product_id
         self.inventory_quantity = inventory_quantity
-        self.deficit_amount= deficit_amount
+        self.deficient_amount= deficient_amount
         self.inventory_time = time
         self.inventory_date = date.today()
         #self.entry_time = en_time
@@ -51,24 +51,24 @@ class  Inventory:
         self.__product_id = product_id   
     
     @property
-    def defecit_amount(self):
-        return self.__deficit_amount
+    def defecient_amount(self):
+        return self.__deficient_amount
 
-    @deficit_amount.setter
-    def deficint_amount(self, deficit_amount):
-        Validator.deficit_amount(deficit_amount)
-        self.__deficit_amount = deficit_amount
+    @deficient_amount.setter
+    def deficint_amount(self, deficient_amount):
+        Validator.deficient_amount(deficient_amount)
+        self.__deficient_amount = deficient_amount
 
     def __repr__(self):
         return (f"Inventory"
         ({self.inventory_id},
         {self.inventory_quantity},
         {self.product_id},
-        {self.deficit_amount}))
+        {self.deficient_amount}))
 
     def to_tuple(self):
         return (self.inventory_id,
                 self.inventory_quantity,
                 self.product_id,
-                self.deficit_amount)
+                self.deficient_amount)
 
