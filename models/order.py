@@ -28,8 +28,8 @@ class Order:
         self.order_type = order_type
         self.customer_id = customer_id
         self.customer_name = customer_name
-        self.status = status                      #status: buy, sell, cart
-        self.total_price = total_price            # price = amount 
+        self.status = status                        #status: buy, sell, cart
+        self.total_price = total_price              # price = amount 
         self.quantity = quantity
         self.payment_id = payment_id
         self.inventory_transaction_id = inventory_transaction_id
@@ -163,4 +163,5 @@ class Order:
                 self.inventory_transaction_id,
                 self.quantity,
                 self.date_time
-                self.order_time)
+                self.order_time
+               )
