@@ -3,7 +3,7 @@
 #  نمیتونم از order ایمپورت کنم قیمت کل رو نشون بده سر همین متود total_amount مونده
 
 from datetime import datetime
-from customer import name
+from customer import Customer
 
 class PaymentTransaction:
     next_no = 1001
@@ -20,24 +20,26 @@ class PaymentTransaction:
         pass
 
     def __repr__(self):
-       return f"PaymentTransaction(number= {self.receipt_no},date = {self.date}, time = {self.time}, total_amount = {self.total_amount})"
+       return f"PaymentTransaction(number= {self.receipt_no}, total_amount = {self.total_amount})"
 
 receipt1 = PaymentTransaction(1000)
-print(receipt1)
 print(receipt1.date.strftime("%d/%m/%y"))
 print(receipt1.time.strftime("%H:%M:%S"))
-
+print(receipt1)
 
 class PaymentReceived(PaymentTransaction):
-    def __init__(self, total_amount, payer, card_number ):
+    def __init__(self, total_amount, card_number ):
         super().__init__(total_amount)
-        self.payer = payer
+        self.payer = Customer
         self.card_number = card_number
 
+    @staticmethod
+    def get_card_number():
+        card_number = input("Please Enter Your Card Number: ")
 
 
 
-
+receipt2 = PaymentReceived
 
 
 
