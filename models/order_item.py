@@ -1,21 +1,30 @@
-#Sepideh
+#Sepideh Soltaninejad
 
-from test import orderitem_test
+from tests import orderitem_test
 from datetime import date, timedelta, time
 from tools.validation import  Validator
 
 
 class Order_Item:
-    def __init__(self, order_item_id, customer_name, product_id , price, quantity, date, time):
+    def __init__(self,
+                 order_item_id,
+                 customer_id,
+                 customer_name,
+                 product_id,
+                 product_name, 
+                 price,
+                 quantity, 
+                 ):
+                     
         self.order_item_id = order_item_id
+        self.customer_id = customer_id            
         self.customer_name = customer_name
         self.product_id = product_id
         self.product_name = product_name
         self.quantity = quantity
         self.price = price
-        #self.orderitem_time = time
-        #self.orderitem_date = date.today()
-
+        
+                     
     @property
     def order_item_id(self):
         return self.__order_item_id
@@ -25,6 +34,15 @@ class Order_Item:
         Validator.order_item_id_validator(order_item_id)
         self.__order_item_id = order_item_id
 
+    @property
+     def customer_id(self):
+        return self.__customer_id
+
+    @customer_id.setter
+     def customer_id(self, customer_id):
+        Validator.order_customer_validator(customer_id)
+        self.__customer_id = customer_id
+         
     @property
     def customer_name(self):
         return self.__customer_name
@@ -73,13 +91,16 @@ class Order_Item:
     def __repr__(self):
         return (f"Orderitem "
         ({self.order_item_id},
-         {self.customer_name},
-         {self.product_id},
-         {self.product_name},
-         {self.quantity},{self.price}))
+        {self.customer_id},
+        {self.customer_name},
+        {self.product_id},
+        {self.product_name},
+        {self.quantity},
+        {self.price}))
 
     def to_tuple(self):
         return (self.order_item_id,
+                self.customer_id,
                 self.customer_name,
                 self.product_id,
                 self.product_name,
