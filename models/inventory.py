@@ -42,6 +42,15 @@ class  Inventory:
         self.__inventory_quantity = inventory_quantity
 
     @property
+    def product_id(self):
+        return self.__product_id
+
+    @product_id.setter
+    def product_id(self, product_id):
+        Validator.product_id(product_id)
+        self.__product_id = product_id   
+    
+    @property
     def defecit_amount(self):
         return self.__deficit_amount
 
