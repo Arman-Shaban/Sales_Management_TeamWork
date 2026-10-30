@@ -1,28 +1,30 @@
 #Nastaran
 # می خوام بعدا لیست اقلام رو جدول مانند نشون بده
+
 from datetime import datetime
+
+
 class PaymentTransaction:
     next_no = 1001
-    def __init__(self, receipt_no, total_amount, date = None, time = None):
+    def __init__(self, total_amount):
         self.receipt_no = PaymentTransaction.next_no
         PaymentTransaction.next_no += 1
         self.total_amount = total_amount
-        self.date = date
-        self.time = time
+        dt = datetime.now()
+        self.date = dt.date()
+        self.time = dt.time()
 
-    def payment_date(self):
-        dt =datetime.now()
-        return dt
-
-receipt1 = PaymentTransaction(1, 1000)
-print(receipt1.payment_date())
+receipt1 = PaymentTransaction(1000)
+print(receipt1.date.strftime("%d/%m/%y"))
+print(receipt1.time.strftime("%H:%M:%S"))
 
 
 class PaymentReceived(PaymentTransaction):
-    def __init__(self, payyer, card_number ):
-        self.payyer = payyer
+    def __init__(self, total_amount, payer, card_number ):
+        super().__init__(total_amount)
+        self.payer = payer
         self.card_number = card_number
 
 class OutgoingPayment(PaymentTransaction):
-    def __init__(self):
-        pass
+    def __init__(self, total_amount):
+        super().__init__(total_amount)
