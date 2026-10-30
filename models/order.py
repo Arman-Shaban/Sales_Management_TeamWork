@@ -1,10 +1,9 @@
 #Sepideh
 
-from model import *
-
-from test import orderitem_test
+from models import *
+from tests import orderitem_test
 from datetime import date, time, timedelta
-from tools.validation import  Validator
+from tools.validation import Validator
 
 #purchase_invoice: buy
 #sales_invoice: sell
@@ -17,7 +16,7 @@ class Order:
         self.customer_id = customer_id
         self.customer_name = customer_name
         self.status = status
-        self.total_price = total_price
+        self.total_price = total_price     # amount= price  
         self.quantity = quantity
         self.payment_id = payment_id
         self.inventory_transaction_id = inventory_transaction_id
@@ -74,7 +73,7 @@ class Order:
 
     @property
     def total_price(self):
-        return self.__total_price
+        return self.__total_amount
 
     @total_price.setter
     def total_price(self, total_price):
