@@ -36,15 +36,16 @@ class Order:
                      date_time,
                      order_time=None
                      ):
+                         
             self.order_id = order_id
-            self.order_type = order_type  # order_type: buy, sell, cart
+            self.order_type = order_type                  # order_type: buy, sell, cart
             self.customer_id = customer_id
             self.customer_name = customer_name
-            self.status = status  # status: pending, completed, cancelled
-            self.total_price = total_price  # price = amount
+            self.status = status                          # status: pending, completed, cancelled
+            self.total_price = total_price                # price = amount
             self.quantity = quantity
-            self.payment_id = payment_id  # 0 = not paid yet
-            self.inventory_transaction_id = inventory_transaction_id  # 0 = no stock movement yet
+            self.payment_id = payment_id                  # 0 = not paid yet
+            self.inventory_transaction_id = inventory_transaction_id             # 0 = no stock movement yet
             self.date_time = date_time
             # the order is valid for 55 minutes unless another time is given
             self.order_time = order_time or now_text(plus_minutes=55)
