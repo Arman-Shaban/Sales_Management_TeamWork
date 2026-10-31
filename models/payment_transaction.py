@@ -1,11 +1,10 @@
 #Nastaran
-# می خوام بعدا لیست اقلام رو جدول مانند نشون بده
-#  نمیتونم از order ایمپورت کنم قیمت کل رو نشون بده سر همین متود total_amount مونده
+# نمی تونم مشتری رو از ماژول مشتری فراخوانی کنمnastaran
 # (The total price now comes from the order: PaymentService passes order.total_price.)
 
 from datetime import datetime
 from models.customer import Customer
-
+from persian_tools.bank import card_number
 
 # ARMAN UPDATE 10/31/2026
 
@@ -25,15 +24,23 @@ class PaymentTransaction:
 
 
 class PaymentReceived(PaymentTransaction):
-    def __init__(self, total_amount, card_number, payer=None):
+    def __init__(self, total_amount, payer, card_number):
         super().__init__(total_amount)
-        self.payer = payer          # a Customer object (it was the Customer class itself before)
+        self.payer = payer         # a Customer object (it was the Customer class itself before)
         self.card_number = card_number
+
+    def __repr__(self):
+        return f"PaymentReceived(payer = {self.payer})"
 
     @staticmethod
     def get_card_number():
         card_number = input("Please Enter Your Card Number: ")
         return card_number
+
+    def validate_card_number(self):
+        card_number.validate(self.card_number)
+
+
 
 
 class OutgoingPayment(PaymentTransaction):
@@ -47,3 +54,7 @@ if __name__ == "__main__":
     print(receipt1.date.strftime("%d/%m/%y"))
     print(receipt1.time.strftime("%H:%M:%S"))
     print(receipt1)
+    payment_receipt = PaymentReceived(1000, "customer1", 56)
+    print(payment_receipt)
+    payment_receipt.get_card_number()
+    payment_receipt.validate_card_number()
