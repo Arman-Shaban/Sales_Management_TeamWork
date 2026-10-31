@@ -29,7 +29,7 @@ class Database:
 
     @contextmanager
     def connection(self) -> Iterator[sqlite3.Connection]:
-        """Short-lived connection for reads."""
+        """Short-lived connection for reads  """
         conn = self._connect()
         try:
             yield conn
@@ -38,11 +38,7 @@ class Database:
 
     @contextmanager
     def transaction(self) -> Iterator[sqlite3.Connection]:
-        """Atomic unit of work: commit on success, roll back on any exception.
 
-        BEGIN IMMEDIATE takes the write lock up front, so checks made inside the
-        block (e.g. stock levels) cannot be invalidated by a concurrent writer.
-        """
         with self.connection() as conn:
             conn.execute("BEGIN IMMEDIATE")
             try:

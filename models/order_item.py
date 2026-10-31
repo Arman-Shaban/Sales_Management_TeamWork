@@ -1,8 +1,8 @@
 #Sepideh Soltaninejad
 
-from tests import orderitem_test
-from datetime import date, timedelta, time
 from tools.validation import  Validator
+
+# ARMAN UPDATE 10/31/2026
 
 
 class Order_Item:
@@ -11,20 +11,20 @@ class Order_Item:
                  customer_id,
                  customer_name,
                  product_id,
-                 product_name, 
+                 product_name,
                  price,
-                 quantity, 
+                 quantity,
                  ):
-                     
+
         self.order_item_id = order_item_id
-        self.customer_id = customer_id            
+        self.customer_id = customer_id
         self.customer_name = customer_name
         self.product_id = product_id
         self.product_name = product_name
         self.quantity = quantity
         self.price = price
-        
-                     
+
+
     @property
     def order_item_id(self):
         return self.__order_item_id
@@ -35,14 +35,14 @@ class Order_Item:
         self.__order_item_id = order_item_id
 
     @property
-     def customer_id(self):
+    def customer_id(self):
         return self.__customer_id
 
     @customer_id.setter
-     def customer_id(self, customer_id):
-        Validator.order_customer_validator(customer_id)
+    def customer_id(self, customer_id):
+        Validator.customer_id_validator(customer_id)
         self.__customer_id = customer_id
-         
+
     @property
     def customer_name(self):
         return self.__customer_name
@@ -84,19 +84,14 @@ class Order_Item:
         return self.__quantity
 
     @quantity.setter
-    def price(self, quantity):
+    def quantity(self, quantity):
         Validator.quantity_validator(quantity)
         self.__quantity = quantity
 
     def __repr__(self):
-        return (f"Orderitem "
-        ({self.order_item_id},
-        {self.customer_id},
-        {self.customer_name},
-        {self.product_id},
-        {self.product_name},
-        {self.quantity},
-        {self.price}))
+        return (f"Orderitem({self.order_item_id}, {self.customer_id}, "
+                f"{self.customer_name}, {self.product_id}, {self.product_name}, "
+                f"{self.quantity}, {self.price})")
 
     def to_tuple(self):
         return (self.order_item_id,

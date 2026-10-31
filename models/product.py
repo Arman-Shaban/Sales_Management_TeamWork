@@ -1,8 +1,11 @@
 #Sepideh
 from tools.validation import Validator
 
+# ARMAN UPDATE 10/31/2026
+
+
 class Product:
-    def __init__(self, product_id, product_name, stock_inventory, price):
+    def __init__(self, product_id, product_name, product_brand, stock_inventory, price):
         self.product_id = product_id
         self.product_name = product_name
         self.product_brand = product_brand
@@ -28,14 +31,14 @@ class Product:
         self.__product_name = product_name
 
     @property
-    def product_name(self):
-        return self.__product_name
+    def product_brand(self):
+        return self.__product_brand
 
     @product_brand.setter
     def product_brand(self, product_brand):
         Validator.product_brand_validator(product_brand)
         self.__product_brand = product_brand
-        
+
     @property
     def stock_inventory(self):
         return self.__stock_inventory
@@ -55,12 +58,8 @@ class Product:
         self.__price = price
 
     def __repr__(self):
-        return (f"Product "
-        ({self.product_id},
-         {self.product_name},
-         {self.product_brand},
-         {self.stock_inventory},
-         {self.price}))
+        return (f"Product({self.product_id}, {self.product_name}, "
+                f"{self.product_brand}, {self.stock_inventory}, {self.price})")
 
     def to_tuple(self):
         return (self.product_id,

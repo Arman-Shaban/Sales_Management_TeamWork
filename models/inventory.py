@@ -1,25 +1,26 @@
 #Sepideh
 
-from datetime import date, timedelta, time
+from datetime import date, datetime
 from tools.validation import Validator
-from models.order import Order
 
 # Soltani Updated
+# ARMAN UPDATE 10/31/2026
 
 class  Inventory:
     def __init__(self, inventory_id,
                  product_id,
                  inventory_quantity,
                  deficient_amount,
-                 inventory_time,
-                 inventory_date):
+                 inventory_time=None,
+                 inventory_date=None):
 
         self.inventory_id = inventory_id
         self.product_id = product_id
         self.inventory_quantity = inventory_quantity
         self.deficient_amount= deficient_amount
-        self.inventory_time = time
-        self.inventory_date = date.today()
+        # if no time/date is given we use the current ones
+        self.inventory_time = inventory_time or datetime.now().strftime("%H:%M:%S")
+        self.inventory_date = inventory_date or date.today().isoformat()
         #self.entry_time = en_time
         #self.exit_time= ex_time
 
@@ -29,7 +30,7 @@ class  Inventory:
 
     @inventory_id.setter
     def inventory_id(self, inventory_id):
-        Validator.inventory_id(inventory_id)
+        Validator.inventory_id_validator(inventory_id)
         self.__inventory_id = inventory_id
 
     @property
@@ -38,7 +39,7 @@ class  Inventory:
 
     @inventory_quantity.setter
     def inventory_quantity(self, inventory_quantity):
-        Validator.inventory_quantity(inventory_quantity)
+        Validator.inventory_quantity_validator(inventory_quantity)
         self.__inventory_quantity = inventory_quantity
 
     @property
@@ -47,28 +48,24 @@ class  Inventory:
 
     @product_id.setter
     def product_id(self, product_id):
-        Validator.product_id(product_id)
-        self.__product_id = product_id   
-    
+        Validator.product_id_validator(product_id)
+        self.__product_id = product_id
+
     @property
-    def defecient_amount(self):
+    def deficient_amount(self):
         return self.__deficient_amount
 
     @deficient_amount.setter
-    def deficint_amount(self, deficient_amount):
-        Validator.deficient_amount(deficient_amount)
+    def deficient_amount(self, deficient_amount):
+        Validator.deficient_amount_validator(deficient_amount)
         self.__deficient_amount = deficient_amount
 
     def __repr__(self):
-        return (f"Inventory"
-        ({self.inventory_id},
-        {self.inventory_quantity},
-        {self.product_id},
-        {self.deficient_amount}))
+        return (f"Inventory({self.inventory_id}, {self.inventory_quantity}, "
+                f"{self.product_id}, {self.deficient_amount})")
 
     def to_tuple(self):
         return (self.inventory_id,
                 self.inventory_quantity,
                 self.product_id,
                 self.deficient_amount)
-
