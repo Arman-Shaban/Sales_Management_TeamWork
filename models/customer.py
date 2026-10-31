@@ -1,5 +1,7 @@
 #Nastaran
 
+# ARMAN UPDATE 10/31/2026
+
 class Customer:
 
     next_id = 1001
@@ -45,11 +47,12 @@ class Customer:
         print(f"Customer(id = {self.customer_id}, name = {self.customer_name}, family = {self.customer_family}, phone = {self.customer_phone})")
 
 
-
-
-name = input(" Enter Your Name: ")
-family = input(" Enter Your Family: ")
-phone = input(" Enter Your Phone: ")
-customer1 = Customer(name, family, phone)
-print(customer1)
-customer1.validate_information()
+# Console demo. It was running at import time before (it asked for input every
+# time any file imported this module), so it now runs only when the file is run directly
+if __name__ == "__main__":
+    name = input(" Enter Your Name: ")
+    family = input(" Enter Your Family: ")
+    phone = input(" Enter Your Phone: ")
+    customer1 = Customer(name, family, phone)
+    print(customer1)
+    customer1.validate_information()
