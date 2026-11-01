@@ -4,6 +4,7 @@ from tools.validation import  Validator
 
 # ARMAN UPDATE 10/31/2026
 
+# sepideh Updated 11/01/2026
 
 class Order_Item:
     def __init__(self,
@@ -89,9 +90,8 @@ class Order_Item:
         self.__quantity = quantity
 
     def __repr__(self):
-        return (f"Orderitem({self.order_item_id}, {self.customer_id}, "
-                f"{self.customer_name}, {self.product_id}, {self.product_name}, "
-                f"{self.quantity}, {self.price})")
+        return (f"Orderitem ({self.order_item_id}, {self.customer_id}, {self.customer_name}),"
+       ("{self.product_id}, {self.product_name}, {self.quantity}, {self.price} )"))
 
     def to_tuple(self):
         return (self.order_item_id,
