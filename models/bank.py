@@ -1,22 +1,26 @@
-from payment_transaction import PaymentTransaction
+from models.order import Order
 
-class PaymentReceived(PaymentTransaction):
-    def __init__(self, total_amount, payer, card_number):
-        super().__init__(total_amount)
-        self.payer = payer         # a Customer object (it was the Customer class itself before)
-        self.card_number = card_number
+class Bank:
+    def __init__(self, balance):
+        self.balance = balance
+        self.total_deposits = 0
+        self.total_withdrawals = 0
+
+    def __repr__(self):
+        return f"Bank(balance ={self.balance}, total_deposits = {self.total_deposits}, total_withdrawals = {self.total_withdrawals})"
+
+    def process_order_type(self, order):
+        if order.order_type == "buy":
+            def withdrawals():
+                pass
+        elif order.order_type == "sell":
+            def deposits():
+                pass
+        else:
+            pass
 
 
- def __repr__(self):
-        return f"PaymentReceived(payer = {self.payer})"
 
+bank1 = Bank(1000)
+print(bank1)
 
-class OutgoingPayment(PaymentTransaction):
-    def __init__(self, total_amount):
-        super().__init__(total_amount)
-
-
-    payment_receipt = PaymentReceived(1000, "customer1", 56)
-    print(payment_receipt)
-    payment_receipt.get_card_number()
-    payment_receipt.validate_card_number()

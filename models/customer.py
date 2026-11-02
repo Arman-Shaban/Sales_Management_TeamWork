@@ -26,10 +26,13 @@ class Customer:
                 print(f"Hello Dear {self.customer_name}")
                 return True
             else:
-                print("Please Edit Your Information")
+                attempt += 1
+                remaining_attempts = 3 - attempt
+                print(f"Please Edit Your Information. remaining_attempts = {remaining_attempts}")
+                if attempt == 3:
+                    break
                 self.editing()
-                attempt +=1
-        print("Error: Too Many Attempt! ")
+        print(f"Error: Too Many Attempt! ")
         return False
 
     def editing(self):
