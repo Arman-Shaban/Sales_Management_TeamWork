@@ -9,10 +9,8 @@ from tools.validation import Validator
 #sales_invoice: sell
 #basket_invoice: cart
 
-# ARMAN UPDATE 10/31/2026
+#ARMAN UPDATE 10/31/2026
 
-
-class Order:
     # Sepideh
 
     from tools.helpers import now_text
@@ -170,4 +168,3 @@ class Order:
                     self.quantity,
                     self.date_time,
                     self.order_time)
-
